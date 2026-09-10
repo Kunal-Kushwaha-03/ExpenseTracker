@@ -14,7 +14,7 @@ public class main {
 
         boolean running = true;
 
-        System.out.println("Welcome to Expense tracker");
+        System.out.println("Welcome to Expense Tracker!");
 
         while (running) {
 
