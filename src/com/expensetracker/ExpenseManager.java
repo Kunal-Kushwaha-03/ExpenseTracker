@@ -5,6 +5,9 @@ import java.util.ArrayList;
 
 public class ExpenseManager {
 
+    private ExpenseDAO expenseDAO = new ExpenseDAO();
+    private IncomeDAO incomeDAO = new IncomeDAO();
+
     private ArrayList<Expense> expenses = new ArrayList<>();
     private ArrayList<Income> incomes;
     private int nextId = 1;
@@ -14,10 +17,31 @@ public class ExpenseManager {
 
         expenses = new ArrayList<>();
         incomes = new ArrayList<>();
+
+
+        expenses = expenseDAO.getAllExpenses();
+        incomes = incomeDAO.getAllIncome();
+
+
+        int maxId = 0;
+        for (Expense e : expenses) {
+            if (e.getid() > maxId) maxId = e.getid();
+        }
+        for (Income i : incomes) {
+            if (i.getId() > maxId) maxId = i.getId();
+        }
+        nextId = maxId + 1;
     }
 
     public void addExpense(Expense expense) {
+        expenseDAO.addExpense(expense);
         expenses.add(expense);
+        nextId++;
+    }
+
+    public void addIncome(Income income) {
+        incomeDAO.addIncome(income);
+        incomes.add(income);
         nextId++;
     }
 
@@ -33,10 +57,6 @@ public class ExpenseManager {
         return total;
     }
 
-    public void addIncome(Income income) {
-        incomes.add(income);
-        nextId++;
-    }
 
     public void viewIncome() {
         if (incomes.isEmpty()) {
@@ -92,7 +112,7 @@ public class ExpenseManager {
                 System.out.println("ID: " + e.getid());
                 System.out.println("Amount: ₹" + e.getAmount());
                 System.out.println("Category: " + e.getcategory());
-                System.out.println("Description: " + e.getdiscription());
+                System.out.println("Description: " + e.getDescription());
                 System.out.println("Date: " + e.getdate());
 
                 System.out.println("----------------------------");

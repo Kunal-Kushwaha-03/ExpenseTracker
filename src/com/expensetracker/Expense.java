@@ -5,15 +5,15 @@ public class Expense {
     private int id;
     private double amount;
     private String category;
-    private String discription;
+    private String description;
     private String date;
 
-    public Expense(int id, double amount, String category, String discription, String date) {
+    public Expense(int id, double amount, String category, String description, String date) {
 
         this.id = id;
         this.amount = amount;
         this.category = category;
-        this.discription = discription;
+        this.description = description;
         this.date = date;
     }
 
@@ -30,9 +30,9 @@ public class Expense {
         return category;
     }
 
-    public String getdiscription() {
+    public String getDescription() {
 
-        return discription;
+        return description;
     }
 
     public String getdate() {
@@ -51,9 +51,9 @@ public class Expense {
         this.category = category;
     }
 
-    public void setDiscription(String discription) {
+    public void setDescription(String description) {
 
-        this.discription = discription;
+        this.description = description;
     }
 
     public void setDate(String date) {
